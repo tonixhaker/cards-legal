@@ -111,12 +111,13 @@
          сторінці та в застосунку.</p>
     </div>
 
-    <footer><a href="./">Kodnyk</a> · <a href="terms.html">Terms of use</a></footer>
+    <footer><a href="./">Kodnyk</a> · <a href="terms.html">Terms of use</a><div class="copy">© <span id="year"></span> Kodnyk</div></footer>
   </div>
 <script>
 const lang = new URLSearchParams(location.search).get("lang");
 if (lang === "uk") document.getElementById("en").style.display = "none";
 if (lang === "en") document.getElementById("uk").style.display = "none";
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

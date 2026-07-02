@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kodnyk — legal</title>
+  <title>Kodnyk — loyalty card wallet</title>
+  <meta name="description" content="Keep every loyalty card in your pocket. Scan, store and show barcodes at checkout — even offline.">
   <link rel="icon" href="mascot.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,22 +13,132 @@
     <header class="site">
       <img src="mascot.png" alt="Kodnyk mascot">
       <div class="name"><a href="./">Kodnyk</a></div>
+      <nav class="lang">
+        <a href="?lang=en" id="lang-en">EN</a><a href="?lang=uk" id="lang-uk">UA</a>
+      </nav>
     </header>
 
-    <div class="card">
-      <h1>Kodnyk — loyalty card wallet</h1>
-      <p>Keep all your discount cards in one place and show a scannable
-         barcode or QR at checkout. iOS &amp; Android.</p>
-      <p>
-        <a class="btn" href="privacy.html">Privacy policy</a>
-        <a class="btn secondary" href="terms.html">Terms of use</a>
-      </p>
-      <p style="color:var(--muted)">Політика конфіденційності та умови
-         використання доступні англійською та українською на відповідних
-         сторінках.</p>
-    </div>
+    <section class="hero">
+      <div>
+        <h1><span data-i18n="heroA">All your loyalty cards.</span><br>
+            <span class="grad" data-i18n="heroB">One zebra.</span></h1>
+        <p class="sub" data-i18n="heroSub">Scan a plastic card once — show a crisp barcode at every
+           checkout. Works offline, syncs between devices, and never forgets
+           a discount.</p>
+        <div class="stores">
+          <a class="store-badge" href="#" aria-label="App Store">
+            <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.9-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span><small data-i18n="storeIosSmall">Download on the</small><b>App Store</b></span>
+          </a>
+          <a class="store-badge" href="#" aria-label="Google Play">
+            <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            <span><small data-i18n="storePlaySmall">GET IT ON</small><b>Google Play</b></span>
+          </a>
+          <span class="soon" data-i18n="soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob"></div>
+        <img class="mascot" src="mascot.png" alt="Kodnyk zebra holding a barcode">
+      </div>
+    </section>
 
-    <footer>Contact: <a href="mailto:tonixhaker@gmail.com">tonixhaker@gmail.com</a></footer>
+    <section class="features">
+      <div class="feature"><div class="ico">📷</div>
+        <h3 data-i18n="f1t">Scan anything</h3>
+        <p data-i18n="f1p">Barcode or QR — from the camera, a photo, or typed by hand. The card cover is auto-cropped like a document.</p>
+      </div>
+      <div class="feature"><div class="ico">✈️</div>
+        <h3 data-i18n="f2t">Works offline</h3>
+        <p data-i18n="f2p">Cards live on your device and render on-screen with no network. The queue at the checkout won't wait.</p>
+      </div>
+      <div class="feature"><div class="ico">📍</div>
+        <h3 data-i18n="f3t">Smart nearby</h3>
+        <p data-i18n="f3p">Kodnyk remembers where you use each card and recommends the right one when you're back in the store.</p>
+      </div>
+      <div class="feature"><div class="ico">🔒</div>
+        <h3 data-i18n="f4t">Yours only</h3>
+        <p data-i18n="f4p">Synced securely, protected by per-user rules. Export everything as JSON or erase your account in one tap.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="shotsTitle">A quick look</h2>
+      <div class="shots">
+        <img src="img/01-login.png" alt="Sign in screen" loading="lazy">
+        <img src="img/02-cards.png" alt="Card grid" loading="lazy">
+        <img src="img/03-card.png" alt="Barcode at checkout" loading="lazy">
+        <img src="img/04-settings.png" alt="Settings" loading="lazy">
+      </div>
+    </section>
+
+    <footer>
+      <a href="privacy.html" id="link-privacy" data-i18n="privacy">Privacy policy</a> ·
+      <a href="terms.html" id="link-terms" data-i18n="terms">Terms of use</a> ·
+      <a href="mailto:tonixhaker@gmail.com" data-i18n="contact">Contact</a>
+      <div class="copy">© <span id="year"></span> Kodnyk</div>
+    </footer>
   </div>
+
+  <script>
+    const i18n = {
+      en: {
+        heroA: 'All your loyalty cards.',
+        heroB: 'One zebra.',
+        heroSub: 'Scan a plastic card once — show a crisp barcode at every checkout. Works offline, syncs between devices, and never forgets a discount.',
+        storeIosSmall: 'Download on the',
+        storePlaySmall: 'GET IT ON',
+        soon: 'Coming soon',
+        f1t: 'Scan anything',
+        f1p: 'Barcode or QR — from the camera, a photo, or typed by hand. The card cover is auto-cropped like a document.',
+        f2t: 'Works offline',
+        f2p: "Cards live on your device and render on-screen with no network. The queue at the checkout won't wait.",
+        f3t: 'Smart nearby',
+        f3p: "Kodnyk remembers where you use each card and recommends the right one when you're back in the store.",
+        f4t: 'Yours only',
+        f4p: 'Synced securely, protected by per-user rules. Export everything as JSON or erase your account in one tap.',
+        shotsTitle: 'A quick look',
+        privacy: 'Privacy policy',
+        terms: 'Terms of use',
+        contact: 'Contact',
+      },
+      uk: {
+        heroA: 'Усі ваші дисконтні картки.',
+        heroB: 'Одна зебра.',
+        heroSub: 'Відскануйте пластикову картку один раз — показуйте чіткий штрихкод на кожній касі. Працює офлайн, синхронізується між пристроями і не забуває жодної знижки.',
+        storeIosSmall: 'Завантажуйте в',
+        storePlaySmall: 'ДОСТУПНО В',
+        soon: 'Незабаром',
+        f1t: 'Сканує все',
+        f1p: 'Штрихкод чи QR — камерою, з фото або вручну. Обкладинка картки обрізається автоматично, як документ.',
+        f2t: 'Працює офлайн',
+        f2p: 'Картки живуть на вашому пристрої та відображаються без інтернету. Черга на касі не чекатиме.',
+        f3t: 'Розумні рекомендації',
+        f3p: "Kodnyk пам'ятає, де ви використовуєте кожну картку, і пропонує потрібну, щойно ви знову в магазині.",
+        f4t: 'Тільки ваше',
+        f4p: 'Безпечна синхронізація, захист правилами доступу. Експортуйте все у JSON або видаліть акаунт одним дотиком.',
+        shotsTitle: 'Як це виглядає',
+        privacy: 'Політика конфіденційності',
+        terms: 'Умови використання',
+        contact: 'Контакт',
+      },
+    };
+
+    const params = new URLSearchParams(location.search);
+    const lang = params.get('lang')
+      ?? ((navigator.language || '').toLowerCase().startsWith('uk') ? 'uk' : 'en');
+    const active = i18n[lang] ? lang : 'en';
+
+    document.documentElement.lang = active;
+    for (const el of document.querySelectorAll('[data-i18n]')) {
+      const value = i18n[active][el.dataset.i18n];
+      if (value) el.textContent = value;
+    }
+    document.getElementById('lang-' + active)?.classList.add('active');
+    // Carry the language into the legal pages.
+    document.getElementById('link-privacy').href = 'privacy.html?lang=' + active;
+    document.getElementById('link-terms').href = 'terms.html?lang=' + active;
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
