@@ -43,34 +43,7 @@
       </div>
     </section>
 
-    <section class="features">
-      <div class="feature"><div class="ico">📷</div>
-        <h3 data-i18n="f1t">Scan anything</h3>
-        <p data-i18n="f1p">Barcode or QR — from the camera, a photo, or typed by hand. The card cover is auto-cropped like a document.</p>
-      </div>
-      <div class="feature"><div class="ico">✈️</div>
-        <h3 data-i18n="f2t">Works offline</h3>
-        <p data-i18n="f2p">Cards live on your device and render on-screen with no network. The queue at the checkout won't wait.</p>
-      </div>
-      <div class="feature"><div class="ico">📍</div>
-        <h3 data-i18n="f3t">Smart nearby</h3>
-        <p data-i18n="f3p">Kodnyk remembers where you use each card and recommends the right one when you're back in the store.</p>
-      </div>
-      <div class="feature"><div class="ico">🔒</div>
-        <h3 data-i18n="f4t">Yours only</h3>
-        <p data-i18n="f4p">Synced securely, protected by per-user rules. Export everything as JSON or erase your account in one tap.</p>
-      </div>
-      <div class="feature"><div class="ico">📲</div>
-        <h3 data-i18n="f5t">Home-screen widget</h3>
-        <p data-i18n="f5p">Your cards right on the iPhone home screen — nearby ones first, favourites next. Flip through and scan without opening the app.</p>
-      </div>
-      <div class="feature"><div class="ico">⭐</div>
-        <h3 data-i18n="f6t">Favourites &amp; your order</h3>
-        <p data-i18n="f6p">Star the cards you use most and drag the grid into your own order — just like home-screen icons.</p>
-      </div>
-    </section>
-
-    <section>
+    <section class="steps-section">
       <h2 data-i18n="howTitle">How it works</h2>
       <div class="steps">
         <div class="step">
@@ -87,6 +60,60 @@
           <img src="img/onboarding-s3.png" alt="Nearby card recommendation" loading="lazy">
           <h3><span class="n">3</span><span data-i18n="s3t">The right card, right there</span></h3>
           <p data-i18n="s3p">Kodnyk recommends the cards you use near your current location — in the app and on the widget.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase">
+      <div class="show-col side-left">
+        <div class="show-feature is-active" data-shot="img/00-onboarding.png">
+          <div class="txt">
+            <h3 data-i18n="f1t">Scan anything</h3>
+            <p data-i18n="f1p">Barcode or QR — from the camera, a photo, or typed by hand. The card cover is auto-cropped like a document.</p>
+          </div>
+          <div class="ico">📷</div>
+        </div>
+        <div class="show-feature" data-shot="img/03-card.png">
+          <div class="txt">
+            <h3 data-i18n="f2t">Works offline</h3>
+            <p data-i18n="f2p">Cards live on your device and render on-screen with no network. The queue at the checkout won't wait.</p>
+          </div>
+          <div class="ico">✈️</div>
+        </div>
+        <div class="show-feature" data-shot="img/06-nearby.png">
+          <div class="txt">
+            <h3 data-i18n="f3t">Smart nearby</h3>
+            <p data-i18n="f3p">Kodnyk remembers where you use each card and recommends the right one when you're back in the store.</p>
+          </div>
+          <div class="ico">📍</div>
+        </div>
+      </div>
+      <div class="show-phone">
+        <div class="frame">
+          <img id="phone-shot" src="img/00-onboarding.png" alt="Kodnyk app screen">
+        </div>
+      </div>
+      <div class="show-col side-right">
+        <div class="show-feature" data-shot="img/01-login.png">
+          <div class="ico">🔒</div>
+          <div class="txt">
+            <h3 data-i18n="f4t">Yours only</h3>
+            <p data-i18n="f4p">Synced securely, protected by per-user rules. Export everything as JSON or erase your account in one tap.</p>
+          </div>
+        </div>
+        <div class="show-feature" data-shot="img/03-card.png">
+          <div class="ico">📲</div>
+          <div class="txt">
+            <h3 data-i18n="f5t">Home-screen widget</h3>
+            <p data-i18n="f5p">Your cards right on the iPhone home screen — nearby ones first, favourites next. Flip through and scan without opening the app.</p>
+          </div>
+        </div>
+        <div class="show-feature" data-shot="img/02-cards.png">
+          <div class="ico">⭐</div>
+          <div class="txt">
+            <h3 data-i18n="f6t">Favourites &amp; your order</h3>
+            <p data-i18n="f6p">Star the cards you use most and drag the grid into your own order — just like home-screen icons.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -190,6 +217,24 @@
     document.getElementById('link-privacy').href = 'privacy.html?lang=' + active;
     document.getElementById('link-terms').href = 'terms.html?lang=' + active;
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Feature showcase: hovering a feature highlights it and swaps the
+    // phone screen to the screenshot demonstrating it.
+    const phoneShot = document.getElementById('phone-shot');
+    const showFeatures = document.querySelectorAll('.show-feature');
+    for (const feature of showFeatures) {
+      new Image().src = feature.dataset.shot; // preload
+      feature.addEventListener('mouseenter', () => {
+        for (const other of showFeatures) other.classList.remove('is-active');
+        feature.classList.add('is-active');
+        if (phoneShot.getAttribute('src') === feature.dataset.shot) return;
+        phoneShot.style.opacity = '0';
+        setTimeout(() => {
+          phoneShot.src = feature.dataset.shot;
+          phoneShot.style.opacity = '1';
+        }, 160);
+      });
+    }
   </script>
 </body>
 </html>

@@ -116,62 +116,77 @@ footer .copy { margin-top: 8px; }
 .store-badge b { display: block; font-size: 1.02rem; line-height: 1.2; }
 .soon { font-size: .8rem; color: var(--muted); }
 
-.features {
+/* Feature showcase: phone mockup in the middle, features on both sides.
+   Hovering a feature highlights it and swaps the phone screenshot. */
+.showcase {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 26px 0;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 22px;
+  align-items: center;
+  margin: 34px 0 26px;
 }
-@media (max-width: 860px) { .features { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
-.feature {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 22px;
+.show-col { display: flex; flex-direction: column; gap: 12px; }
+.show-feature {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid transparent;
+  border-radius: 18px;
   animation: rise .7s ease both;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  overflow: hidden;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.feature::before {
-  content: "";
-  position: absolute; inset: 0 0 auto 0; height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-  opacity: 0;
-  transition: opacity .18s ease;
-}
-.feature:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 14%, transparent);
-}
-.feature:hover::before { opacity: 1; }
-.feature:nth-child(2) { animation-delay: .08s; }
-.feature:nth-child(3) { animation-delay: .16s; }
-.feature:nth-child(4) { animation-delay: .24s; }
-.feature:nth-child(5) { animation-delay: .32s; }
-.feature:nth-child(6) { animation-delay: .4s; }
+.show-col .show-feature:nth-child(2) { animation-delay: .08s; }
+.show-col .show-feature:nth-child(3) { animation-delay: .16s; }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
-.feature .ico {
-  width: 46px; height: 46px;
+.side-left .show-feature { text-align: right; }
+.show-feature .ico {
+  flex: none;
+  width: 52px; height: 52px;
   display: grid; place-items: center;
-  font-size: 1.35rem; line-height: 1;
-  border-radius: 14px;
-  background: linear-gradient(135deg,
-    color-mix(in srgb, var(--accent) 16%, var(--card)),
-    color-mix(in srgb, var(--accent-soft) 26%, var(--card)));
+  font-size: 1.3rem; line-height: 1;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 12%, var(--card));
   border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+  transition: transform .2s ease;
 }
-.feature h3 { margin: 12px 0 4px; font-size: 1rem; }
-.feature p { color: var(--muted); font-size: .92rem; margin: 0; }
+.show-feature h3 { margin: 2px 0 4px; font-size: 1.02rem; }
+.show-feature p { color: var(--muted); font-size: .9rem; margin: 0; }
+.show-feature.is-active,
+.show-feature:hover {
+  background: var(--card);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.show-feature.is-active .ico,
+.show-feature:hover .ico { transform: scale(1.08); }
+
+.show-phone .frame {
+  width: 258px;
+  padding: 10px;
+  border-radius: 40px;
+  background: #14141b;
+  border: 1px solid #33323e;
+  box-shadow: 0 26px 52px rgba(0, 0, 0, .3);
+  animation: floaty 5.5s ease-in-out infinite;
+}
+.show-phone img {
+  display: block; width: 100%;
+  border-radius: 31px;
+  transition: opacity .16s ease;
+}
+@media (max-width: 920px) {
+  .showcase { grid-template-columns: 1fr; gap: 12px; }
+  .show-phone { display: none; }
+  .side-left .show-feature { flex-direction: row-reverse; text-align: left; }
+}
 
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
-  margin: 12px 0 26px;
+  margin: 18px 0 48px;
 }
+/* Breathing room around the How-it-works block. */
+.steps-section { margin-top: 40px; }
 .step {
   background: var(--card);
   border: 1px solid var(--border);
