@@ -222,6 +222,17 @@
     // phone screen to the screenshot demonstrating it.
     const phoneShot = document.getElementById('phone-shot');
     const showFeatures = document.querySelectorAll('.show-feature');
+    // App screenshots follow the page language (img/uk/ mirrors img/).
+    if (active === 'uk') {
+      const localize = (src) => src.replace('img/', 'img/uk/');
+      phoneShot.src = localize(phoneShot.getAttribute('src'));
+      for (const img of document.querySelectorAll('.shots img')) {
+        img.src = localize(img.getAttribute('src'));
+      }
+      for (const feature of showFeatures) {
+        feature.dataset.shot = localize(feature.dataset.shot);
+      }
+    }
     for (const feature of showFeatures) {
       new Image().src = feature.dataset.shot; // preload
       feature.addEventListener('mouseenter', () => {
